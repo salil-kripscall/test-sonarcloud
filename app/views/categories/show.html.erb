@@ -1,0 +1,50 @@
+<h1><%= @category.name %></h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Cost Price</th>
+      <th scope="col">Selling Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Ideal Quantity</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.items.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.id %></th>
+        <td><%= link_to item.name, item %></td>
+        <td><%= item.cost_price %></td>
+        <td><%= item.selling_price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.ideal_quantity %></td>
+        <td><%= item.status %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.admin %>
+  <p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add an item
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <%= render "items/new" %>
+    </div>
+  </div>
+
+  <ul>
+    <li><%= link_to "Edit Category", edit_category_path(@category) %></li>
+    <li><%= link_to "Delete Category", category_path(@category), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  </ul>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Vendors</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Vendor Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <th scope="row"><%= vendor.id %></th>
+        <td><%= link_to vendor.name, vendor %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

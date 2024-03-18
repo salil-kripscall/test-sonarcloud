@@ -1,0 +1,30 @@
+<h1>Purchase List</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Item Id</th>
+      <th scope="col">Vendor Id</th>
+      <th scope="col">Cost Price</th>
+      <th scope="col">Purchase Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase.each do |purchase| %>
+      <tr>
+        <th scope="row"><%= purchase.id %></th>
+        <td><%= purchase.item_id %></td>
+        <td><%= purchase.vendor_id %></td>
+        <td><%= purchase.cost_price %></td>
+        <td><%= purchase.purchase_quantity %></td>
+        <td><%= purchase.total_price %></td>
+        <td><%= purchase.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

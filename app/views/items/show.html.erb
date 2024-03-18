@@ -1,0 +1,18 @@
+<h1><%= @item.name %></h1>
+
+<% if @item.header_image.present? %>
+  <%= image_tag @item.header_image %>
+<% else %>  
+  <p>Picture unavailable</p>
+<% end %>
+
+<% if current_user.admin %>
+  <ul>
+    <li><%= link_to "Purchase this Item", new_purchase_path(item_id:@item.id) %> </li>
+    <li><%= link_to "Edit Item", edit_item_path(@item) %></li>
+    <li><%= link_to "Delete Item", item_path(@item), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %></li>
+  </ul>
+<% end %>

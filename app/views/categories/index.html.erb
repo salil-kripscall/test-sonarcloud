@@ -1,0 +1,28 @@
+<h1>Categories</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <th scope="row"><%= category.id %></th>
+        <td><%= link_to category.name, category %></td>
+        <td><%= category.status %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.admin %>
+  <ul>
+    <li><%= link_to "Add New Category", new_category_path %></li>
+    <li><%= link_to "Add New Vendor", new_vendor_path %></li>
+  </ul>
+<% end %>

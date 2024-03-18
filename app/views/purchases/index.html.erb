@@ -1,0 +1,22 @@
+<h1>Purchase</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <th scope="row"><%= link_to purchase.id, purchase %></th>
+        <td><%= purchase.total_price %></td>
+        <td><%= purchase.purchase_quantity %></td> 
+        <td><%= purchase.vendor_id %></td>       
+      </tr>
+    <% end %>
+  </tbody>
+</table>

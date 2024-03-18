@@ -1,0 +1,26 @@
+<%= form_with model: @purchase do |form| %>
+  <%= form.text_field :item_id,:readonly => true, value: @item.id, class: "form-control" %>
+  <%= form.text_field :cost_price, :readonly => true, value: @item.cost_price, class: "form-control" %>
+  <div>
+    <%= form.label :choose_vendor %><br>
+    <%= form.collection_select :vendor_id, @vendors, :id, :name %><br>
+    
+  </div>
+  <div class="form-group">
+    <%= form.label :purchase_quantity %><br>
+    <%= form.text_field :purchase_quantity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total %><br>
+    <%= form.text_field :total_price, class: "form-control" %>
+    <% @purchase.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

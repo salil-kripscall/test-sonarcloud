@@ -1,0 +1,41 @@
+<div>
+  <h1>New Item</h1>
+</div>
+
+<%= form_with model: @item do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @item.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :cost_price %><br>
+    <%= form.text_field :cost_price %>
+  </div>
+  <div>
+    <%= form.label :selling_price %><br>
+    <%= form.text_field :selling_price %>
+  </div>
+  <div>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :quantity %>
+  </div>
+  <div>
+    <%= form.label :ideal_quantity %><br>
+    <%= form.text_field :ideal_quantity %>
+  </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.radio_button :status, true %> Yes<br />
+    <%= form.radio_button :status, false %> No<br />   
+    <% @item.errors.full_messages_for(:status).each do |message| %>
+      <div><%= message %></div>
+    <% end %> 
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
